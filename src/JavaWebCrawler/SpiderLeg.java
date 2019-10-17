@@ -30,7 +30,7 @@ public class SpiderLeg {
             Document htmlDocument = connection.get();
             this.htmlDocument = htmlDocument;
 
-            if(connection.response().statusCode() == 200) System.out.println("Received web page at" + nextUrl);
+            if(connection.response().statusCode() == 200) System.out.println("Received web page at " + nextUrl);
 
             if(!connection.response().contentType().contains("text/html")) {
                 System.out.println("**Failure** Retrieved something other than HTML");
