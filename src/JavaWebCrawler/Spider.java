@@ -7,7 +7,8 @@ import java.util.Set;
 
 public class Spider {
 
-    private static final int MAX_PAGES_TO_SEARCH = 10;
+    private static int count; //counts the amount of times keyword appears
+    private static final int MAX_PAGES_TO_SEARCH = 10; //limits number of searched pages
     private Set<String> pagesVisited = new HashSet<String>();
     private List<String> pagesToVisit = new LinkedList<String>();
 
@@ -22,13 +23,14 @@ public class Spider {
                 this.pagesVisited.add(url);
             } else {
                 currentUrl = this.nextUrl();
+                count++;
             }
 
             leg.crawl(currentUrl); //references the crawl method in SpiderLeg.class
 
             boolean success = leg.searchForWord(searchWord);
             if(success) {
-                System.out.println(String.format("**Success** Word %s found at %s", searchWord, currentUrl));
+                System.out.println(String.format("**Success** Word %s found at %s. Count: %s", searchWord, currentUrl, count));
                 break;
             }
             this.pagesToVisit.addAll(leg.getLinks());
