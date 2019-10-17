@@ -1,6 +1,6 @@
 package JavaWebCrawler;
 
-public class SpiderTest {
+public class SpiderMain {
 
     public static void main(String[] args) {
         Spider spider = new Spider();
