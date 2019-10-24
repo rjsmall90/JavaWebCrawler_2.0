@@ -9,8 +9,5 @@
         <module name="JavaWebCrawler" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="JavaWebCrawler" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
