@@ -15,12 +15,9 @@ public class JwcCrawl {
     public List<String> pagesToVisit(String htmlOutput) {
 
         String[] pagesToVisit = htmlOutput.split(">");
-        List<String> pages = new ArrayList<>();
         for(int i=0;i<pagesToVisit.length;i++) {
-            pages.add(pagesToVisit[i]);
-            if(pages.get(i).contains("<a href")) {
-                this.pagesWillVisit.add(pages.get(i));
-                continue;
+            if(pagesToVisit[i].contains("<a href")) {
+                this.pagesWillVisit.add(pagesToVisit[i]);
             }
         }
         return this.pagesWillVisit;
@@ -33,12 +30,12 @@ public class JwcCrawl {
                 URL url = new URL(pages.get(i));
                 BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
                 String inputLine = in.readLine();
-                //System.out.println(inputLine);
+                System.out.println(inputLine);
 
 
-                if (inputLine.equalsIgnoreCase("facetDisplayName="+topic)) {
-                    links = inputLine;
-                }
+//                if (inputLine.equalsIgnoreCase("facetDisplayName="+topic)) {
+//                    links = inputLine;
+//                }
                 in.close();
 
             }catch(MalformedURLException m) {

@@ -35,7 +35,7 @@ public class JwcURLAccess {
             HttpEntity httpEntity = response.getEntity();
             htmlOutput = EntityUtils.toString(httpEntity);
 
-            System.out.println(jwcCrawl.pagesToVisit(htmlOutput));
+            System.out.println(jwcCrawl.readURL(jwcCrawl.pagesToVisit(htmlOutput), "blood"));
 
         } catch (IOException e) {
             e.printStackTrace();
