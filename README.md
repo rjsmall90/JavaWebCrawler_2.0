@@ -1,5 +1,5 @@
 # JavaWebCrawler 2.0
-I have an app idea that involves a the usage of a web crawler and wanted to build one in Java to see how it functions. 
+I have an full-stack application idea that involves, in part, the usage of a web crawler. I'm building a crawler command-line application to analyze how it could function within the greater context.  
 
 Using Java, Maven, & Apache HttpClient for the connection - Building an upgraded web crawler that given a keyword can locate and collect links, and excerpts
 where instances of the keyword appear, and print out to a text file. 
