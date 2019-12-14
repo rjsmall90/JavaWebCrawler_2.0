@@ -4,23 +4,24 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class JwcURLAccess {
 
-    DefaultHttpClient httpClient = new DefaultHttpClient();
+    CloseableHttpClient httpClient = HttpClients.createDefault();
     JwcCrawl jwcCrawl = new JwcCrawl();
     private List<String> pagesWillVisit = new LinkedList<String>();
+    String htmlOutput;
 
 
-    public void getAccess() {
-        String htmlOutput;
+    public void getAccess() throws IOException {
+
         try{
             HttpGet getReq = new HttpGet("https://www.cochranelibrary.com/home/topic-and-review-group-list.html?page=topic");
             getReq.addHeader("accept", "text/html");
@@ -34,16 +35,17 @@ public class JwcURLAccess {
 
             HttpEntity httpEntity = response.getEntity();
             htmlOutput = EntityUtils.toString(httpEntity);
+            System.out.println(htmlOutput);
 
-            System.out.println(jwcCrawl.readURL(jwcCrawl.pagesToVisit(htmlOutput), "blood"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         finally {
-            httpClient.getConnectionManager().shutdown();
+            httpClient.close();
         }
 
+//        return htmlOutput;
     }
 
 

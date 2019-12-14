@@ -26,22 +26,35 @@ public class JwcCrawl {
     public String readURL(List<String> pages, String topic) throws IOException {
 
         for (int i=0;i<pages.size();i++) {
-            try {
-                URL url = new URL(pages.get(i));
-                BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-                String inputLine = in.readLine();
-                System.out.println(inputLine);
+            for (int x = 0; x < pages.get(i).length() -5; x++) {
+                try {
+//                    String testing = "";
+//                    if (pages.get(i).substring(x, x+5) == "http"){
+                        String testing = pages.get(i).replace(pages.get(i), pages.get(i).substring(9, pages.get(i).length()));
+
+                    //}
+
+                   //System.out.println(testing);
+                    URL url = new URL(testing);
+                    System.out.println(url);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        //System.out.println(inputLine);
+                    }
+                    //System.out.println(inputLine);
 
 
-//                if (inputLine.equalsIgnoreCase("facetDisplayName="+topic)) {
-//                    links = inputLine;
-//                }
-                in.close();
+                    if (inputLine.equalsIgnoreCase("facetDisplayName=" + topic)) {
+                        links = inputLine;
+                    }
+                    in.close();
 
-            }catch(MalformedURLException m) {
-                System.out.println(m);
+                } catch (MalformedURLException m) {
+                    //System.out.println(m);
+                }
+
             }
-
         }
         return links;
     }

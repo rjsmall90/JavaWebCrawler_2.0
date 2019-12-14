@@ -10,5 +10,5 @@ public class JavaWebCrawlerMain {
         //JwcCrawl jwc = new JwcCrawl();
         //jwc.crawl();
         jwcURLAccess.getAccess();
-    }
+        }
 }
