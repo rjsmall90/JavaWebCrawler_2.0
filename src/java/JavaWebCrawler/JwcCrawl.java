@@ -42,7 +42,6 @@ public class JwcCrawl {
                     while ((inputLine = in.readLine()) != null) {
                         //System.out.println(inputLine);
                     }
-                    //System.out.println(inputLine);
 
 
                     if (inputLine.equalsIgnoreCase("facetDisplayName=" + topic)) {
@@ -60,5 +59,4 @@ public class JwcCrawl {
     }
 
 }
-//                URL url = new URL(s);
-//                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+
