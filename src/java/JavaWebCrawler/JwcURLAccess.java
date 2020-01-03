@@ -36,8 +36,10 @@ public class JwcURLAccess {
 
             Scanner scan = new Scanner(response.getEntity().getContent());
             while(scan.hasNext()) {
-                System.out.println(scan.nextLine());
-                htmlOutput.add(scan.nextLine());
+                String x = scan.nextLine();
+                System.out.println(x);
+                htmlOutput.add(x);
+                System.out.println(htmlOutput);
             }
 
         } catch (IOException e) {
