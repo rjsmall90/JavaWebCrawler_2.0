@@ -21,10 +21,10 @@ public class JwcURLAccess {
     List <String> htmlOutput;
 
 
-    public List<String> getAccess() throws IOException {
+    public List<String> getAccess(String url) throws IOException {
 
         try{
-            HttpGet getReq = new HttpGet("https://www.cochranelibrary.com/home/topic-and-review-group-list.html?page=topic");
+            HttpGet getReq = new HttpGet(url);
             getReq.addHeader("accept", "text/html");
             getReq.addHeader(HttpHeaders.USER_AGENT, "User-Agent");
 

@@ -35,9 +35,10 @@ public class JwcCrawl {
 
     }
 
-    public static List<String> crawl(String topic) throws IOException {
+    public static List<String> crawl(String topic, String url) throws IOException {
         List<String> linksFound = new ArrayList<>();
-        for(String link : jwcURL.getAccess()) {
+        List<String>urlArray = Arrays.asList(jwcURL.getAccess(url).get(0).split(">"));
+        for(String link : urlArray) {
             if(link.contains(topic)) { linksFound.add(link); }
         }
 
