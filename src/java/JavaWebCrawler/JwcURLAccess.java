@@ -1,12 +1,10 @@
 package JavaWebCrawler;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
-import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -21,14 +19,14 @@ public class JwcURLAccess {
     List <String> htmlOutput;
 
 
-    public List<String> getAccess(String url) throws IOException {
+    public void getAccess(String url) throws IOException {
 
         try{
             HttpGet getReq = new HttpGet(url);
             getReq.addHeader("accept", "text/html");
             getReq.addHeader(HttpHeaders.USER_AGENT, "User-Agent");
 
-            HttpResponse response = httpClient.execute(getReq);
+            CloseableHttpResponse response = httpClient.execute(getReq);
             int status = response.getStatusLine().getStatusCode();
             if(status != 200) {
                 throw new RuntimeException("Failed--Status: " + status);
@@ -38,8 +36,8 @@ public class JwcURLAccess {
             while(scan.hasNext()) {
                 String x = scan.nextLine();
                 System.out.println(x);
-                htmlOutput.add(x);
-                System.out.println(htmlOutput);
+//                htmlOutput.add(x);
+//                System.out.println(htmlOutput);
             }
 
         } catch (IOException e) {
@@ -49,7 +47,7 @@ public class JwcURLAccess {
             httpClient.close();
         }
 
-        return htmlOutput;
+//        return htmlOutput;
     }
 
 }
